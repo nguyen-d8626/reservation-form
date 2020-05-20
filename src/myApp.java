@@ -26,20 +26,19 @@ public class myApp {
 		System.out.println("Please enter your year of birth: ");
 		year = input.nextInt();
 		
-		System.out.println("Hello "+name +".\nBy now, you are "+ReturnAge(year) +" years old.");
-		
+		System.out.println("Hello "+name +"!");
+		if (ReturnAge(year)>=19) {
+			System.out.println("Please proceed to a new reservation");
+		}
+		else {
+			System.out.println("Sorry, we cannot serve you this year. We are looking foward to serve you in "+ (19-ReturnAge(year)) +" year(s)!");
+		}
 		
 	}
 	
 	public static int ReturnAge(int yr) {
 		int currentYear = Year.now().getValue();
 		int age = currentYear - yr;
-		if (age>=19) {
-			System.out.println("Please proceed to a new reservation");
-		}
-		else {
-			System.out.println("Sorry, we cannot serve you this year. We are looking foward to serve you in "+ (19-age) +" year(s)!");
-		}
 		return age;
 	}
 	
