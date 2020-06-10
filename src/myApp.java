@@ -21,6 +21,7 @@ public class myApp {
 		int year;
 		int numOfPeople;
 		int timeSlot;
+		boolean specialReq;
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Please enter your name: ");
@@ -33,7 +34,15 @@ public class myApp {
 			System.out.println("Please proceed to a new reservation");
 			//proceed to reservation
 			Scanner userInput = new Scanner (System.in);
-			
+			//check if the guests need special help
+			System.out.println("Do you require special help? Enter y for \"Yes\", any other character for \"No\":");
+			String help = userInput.nextLine();
+			if(help.equalsIgnoreCase("y")) {
+				specialReq = true;
+			}
+			else {
+				specialReq = false;
+			}
 			//accept number of people
 			System.out.println("Enter the number of people in your party (minimum: 1, maximum: 20): ");
 		
@@ -82,7 +91,7 @@ public class myApp {
 				}
 				
 			}
-			CreateReservation (name, numOfPeople, timeSlot);
+			CreateReservation (name, numOfPeople, timeSlot,specialReq);
 		}
 		else {
 			System.out.println("Sorry, we cannot serve you this year. We are looking foward to serve you in "+ (19-ReturnAge(year)) +" year(s)!");
@@ -96,10 +105,16 @@ public class myApp {
 		return age;
 	}
 	
-	public static void CreateReservation(String name, int numOfPeo, int time) {
+	public static void CreateReservation(String name, int numOfPeo, int time, boolean sr) {
 		int exactTime = time + 5;
 		
 		System.out.println(name + ", your table for " + numOfPeo + " people has been successfully booked for " + exactTime +" p.m. tonight.");
+		if(sr==true) {
+			System.out.println("Special requirement is needed.");
+		}
+		else {
+			
+		}
 	}
 
 }
